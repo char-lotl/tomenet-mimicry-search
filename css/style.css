@@ -1,0 +1,1030 @@
+* {
+	font-family: 'Trebuchet MS';
+	cursor: default;
+	text-align: center;
+	box-sizing: border-box;
+	-webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+:root {
+	--term-dark: #282828; /* original is #000 of course, but I'd like black monsters to be visible */
+	--term-white: #FFF;
+	--term-slate: #9D9D9D;
+	--term-orange: #FF8D00;
+	--term-red: #B70000;
+	--term-green: #009D44;
+	--term-blue: #03F;
+	--term-umber: #8D6600;
+	--term-l-dark: #666;
+	--term-l-white: #C1C1C1;
+	--term-violet: #AF00FF;
+	--term-yellow: #FF0;
+	--term-l-red: #FF4646;
+	--term-l-green: #0F0;
+	--term-l-blue: #0FF;
+	--term-l-umber: #C79D55;
+}
+
+h1 {
+	text-align: center;
+	margin-top: 2em;
+}
+
+input {
+	width: 3em;
+	cursor: auto;
+}
+
+input[data-invalid] {
+	background-color: #FCC;
+}
+
+#all-inputs {
+	margin-top: 2em;
+	margin-bottom: 3em;
+
+	--inactive-button-color: #CCC;
+	--active-button-color: #9E9;
+	--negative-button-color: #C33;
+
+/* Adjusted terminal colors, made to use as backgrounds. */
+/*--bg-dark: #000; */
+	--bg-white: #EEE; 
+	--bg-slate: #9D9D9D;
+	--bg-orange: #E84;
+	--bg-red: #C33;
+/*--bg-red: #E44;*/
+	--bg-green: #083;
+/*--bg-green: #094*/
+	--bg-blue: #46D;
+/*--bg-blue: #57E; */
+	--bg-umber: #8D6600;
+	--bg-l-dark: #666; 
+	--bg-l-white: #DDD;
+	--bg-violet: #B7E;
+	--bg-yellow: #ED6; /* adjusting this to be more golden to make light-element look better */
+	--bg-l-red: #E98;
+	--bg-l-green: #7E7; 
+	--bg-l-blue: #79D;
+	--bg-l-umber: #C79D55;
+
+	/* Cass-original palette */
+	--bg-cyan: #6DD;
+  --bg-turquoise: #66A8A8;
+	--bg-bronze: #DB6;
+	--bg-pink: #E9E;
+	--bg-l-pink: #ECB;
+
+	/* Elemental colors */
+
+	--bg-fire: var(--bg-l-red);
+	--bg-fire2: var(--bg-red);
+	--bg-cold: var(--bg-l-white);
+	--bg-cold2: var(--bg-white);
+	--bg-elec: #6AE;
+	--bg-elec1: var(--bg-cyan);
+	--bg-elec2: var(--bg-blue);
+	--bg-acid: var(--bg-slate);
+	--bg-acid2: var(--bg-l-dark);
+	--bg-poison: var(--bg-l-green);
+	--bg-poison2: var(--bg-green);
+	--bg-water: var(--bg-l-blue);
+	--bg-water2: var(--bg-turquoise);
+
+	--bg-light: var(--bg-yellow);
+	--bg-darkness: var(--bg-l-dark);
+	--bg-sound: var(--bg-bronze);
+	--bg-shards: #975;
+	--bg-nether: #353;
+	--bg-nexus: #C8C;
+	--bg-confusion: var(--bg-l-umber);
+	--bg-chaos: var(--bg-pink);
+	--bg-disenchantment: var(--bg-blue);
+	--bg-time: var(--bg-cyan);
+	--bg-mana: var(--bg-violet);
+	--bg-psi: var(--bg-l-green);
+	--bg-psi2: var(--bg-green);
+	--bg-gravity: var(--bg-umber);
+	--bg-inertia: var(--bg-l-white);
+	--bg-toxic-waste: var(--bg-green);
+	--bg-ice: var(--bg-l-white);
+	--bg-plasma: #F87;
+	--bg-force: #EB9;
+	--bg-disintegration: #822;
+	--bg-rocket: #C86;
+	--bg-cause: var(--bg-l-red);
+
+	--bg-blind: var(--bg-l-dark);
+	--bg-fear: var(--bg-l-pink);
+	--bg-stun: var(--bg-yellow);
+	--bg-slow: var(--bg-yellow);
+	--bg-paralysis: var(--bg-slate);
+	--bg-teleport: var(--bg-l-blue);
+
+	--bg-haste: var(--bg-l-green);
+	--bg-heal: var(--bg-green);
+	--bg-shriek: var(--bg-l-red);
+
+	--bg-arrow: var(--bg-l-umber);
+	--bg-shot: var(--bg-slate);
+	--bg-bolt: var(--bg-slate);
+	--bg-missile: var(--bg-slate);
+	--bg-boulder: var(--bg-umber); 
+
+}
+
+@media (min-width: 55em) {
+	#all-inputs {
+		width: 50%;
+		margin-left: auto;
+		margin-right: auto;
+	}
+}
+
+#all-inputs > details { margin-bottom: 0.6em; }
+
+#all-inputs > details[open] { 
+	margin-bottom: 1em;
+}
+
+#all-inputs > details[open] summary { margin-bottom: 0.66em; }
+#all-inputs > details[open] summary::before {
+	transform: rotate(90deg);
+	top: -0.05em;
+}
+
+#all-inputs summary {
+	position: relative;
+	font-size: 1.5em;
+	font-weight: bold;
+	background-color: #BBE;
+	list-style: none;
+}
+
+#all-inputs summary::before {
+	content: "▶";
+	position: absolute;
+	left: 0.2em;
+	top: -0.15em;
+	transition-duration: 0.1s;
+	transition-timing-function: linear;
+}
+
+#all-inputs > div, #all-inputs > details > div {
+	display: flex;
+	gap: 0.5em;
+	justify-content: space-around;
+	align-items: stretch;
+	flex-wrap: wrap;
+  text-align: center;
+  margin-top: 0.5em;
+}
+
+#all-inputs div * { flex-grow: 1; }
+
+#all-inputs h2 { background-color: #BBE; }
+#all-inputs h3 { background-color: #BBB; }
+
+#all-inputs button {
+	background: none;
+	--button-bg-color: var(--inactive-button-color);
+  background-color: var(--button-bg-color);
+  color: lch(from var(--button-bg-color) calc((l - 55) * -infinity) 0 0);
+	border: none;
+	font-size: inherit;
+	font-weight: bold;
+	padding: 0.5em;
+}
+
+#all-inputs button[data-state="active"] { --button-bg-color: var(--active-button-color); }
+
+/* Core statistics block */
+
+#level-input, #hp-input, #speed-input, #ac-input { font-weight: bold; }
+
+/* Limbs and class restrictions block */
+
+#all-inputs #class-buttons { /* needs double ID to win out in specificity */
+	justify-content: center;
+	align-items: baseline;
+}
+
+#class-buttons button {
+	flex-grow: inherit;
+}
+
+#class-switch-button { display: grid; }
+#class-switch-button span {
+	grid-area: 1 / 1;
+	visibility: hidden;
+}
+
+#class-switch-button[data-state="shaman"] { --button-bg-color: var(--bg-l-red); }
+#class-switch-button[data-state="druid"] { --button-bg-color: var(--bg-l-green); }
+#class-switch-button[data-state="mimic"] > #mimic-label { visibility: visible; }
+#class-switch-button[data-state="shaman"] > #shaman-label { visibility: visible; }
+#class-switch-button[data-state="druid"] > #druid-label { visibility: visible; }
+
+/* Resistances and immunities block */
+
+#res-imm-buttons > button { display: grid; }
+#res-imm-buttons > button > span {
+	grid-area: 1 / 1;
+	visibility: hidden;
+}
+
+#res-imm-buttons > button[data-state="inactive"] > span.inactive-label { visibility: visible; }
+#res-imm-buttons > button[data-state="resists"] > span.resist-label { visibility: visible; }
+#res-imm-buttons > button[data-state="immune"] > span.immune-label { visibility: visible; }
+
+#fire-res-button[data-state="resists"] { --button-bg-color: var(--bg-fire); }
+#fire-res-button[data-state="immune"] { --button-bg-color: var(--bg-fire2); }
+#cold-res-button[data-state="resists"] { --button-bg-color: var(--bg-cold); }
+#cold-res-button[data-state="immune"] { --button-bg-color: var(--bg-cold2); }
+#electricity-res-button[data-state="resists"] { --button-bg-color: var(--bg-elec1); }
+#electricity-res-button[data-state="immune"] { --button-bg-color: var(--bg-elec2); }
+#acid-res-button[data-state="resists"] { --button-bg-color: var(--bg-acid); }
+#acid-res-button[data-state="immune"] { --button-bg-color: var(--bg-acid2); }
+#poison-res-button[data-state="resists"] { --button-bg-color: var(--bg-poison); }
+#poison-res-button[data-state="immune"] { --button-bg-color: var(--bg-poison2); }
+#water-res-button[data-state="resists"] { --button-bg-color: var(--bg-water); }
+#water-res-button[data-state="immune"] { --button-bg-color: var(--bg-water2); }
+
+#other-elemental-res-buttons > button { display: grid; }
+#other-elemental-res-buttons > button > span {
+	grid-area: 1 / 1;
+	visibility: hidden;
+}
+
+#other-elemental-res-buttons > button[data-state="inactive"] > span.inactive-label { visibility: visible; }
+#other-elemental-res-buttons > button[data-state="resists"] > span.resist-label { visibility: visible; }
+#other-elemental-res-buttons > button[data-state="resists-greatly"] > span.resist-greatly-label { visibility: visible; }
+
+#all-inputs #light-res-button[data-state="active"] { --button-bg-color: var(--bg-light); }
+#all-inputs #dark-res-button[data-state="active"] { --button-bg-color: var(--bg-darkness); }
+#all-inputs #sound-res-button[data-state="active"] { --button-bg-color: var(--bg-sound); }
+#all-inputs #shards-res-button[data-state="active"] { --button-bg-color: var(--bg-shards); }
+#all-inputs #nether-res-button[data-state="active"] { --button-bg-color: var(--bg-nether); }
+#all-inputs #nexus-res-button[data-state="active"] { --button-bg-color: var(--bg-nexus); }
+#all-inputs #chaos-res-button[data-state="active"] { --button-bg-color: var(--bg-chaos); }
+#all-inputs #disenchantment-res-button[data-state="active"] { --button-bg-color: var(--bg-disenchantment); }
+#all-inputs #time-res-button[data-state="active"] { --button-bg-color: var(--bg-time); }
+#all-inputs #mana-res-button[data-state="active"] { --button-bg-color: var(--bg-mana); }
+#all-inputs #psi-res-button[data-state="resists"] { --button-bg-color: var(--bg-psi); }
+#all-inputs #psi-res-button[data-state="resists-greatly"] { --button-bg-color: var(--bg-psi2); }
+
+#all-inputs #fear-res-button[data-state="active"] { --button-bg-color: var(--bg-fear); }
+#all-inputs #blindness-res-button[data-state="active"] { --button-bg-color: var(--bg-blind); }
+#all-inputs #confusion-res-button[data-state="active"] { --button-bg-color: var(--bg-confusion); }
+#all-inputs #teleportation-res-button[data-state="active"] { --button-bg-color: var(--bg-teleport); }
+#all-inputs #paralysis-res-button[data-state="active"] { --button-bg-color: var(--bg-paralysis); }
+#all-inputs #cut-res-button[data-state="active"] { --button-bg-color: var(--bg-shards); }
+
+/* Mobility block */
+
+#wraithform-button { display: grid; }
+#wraithform-button > span { grid-area: 1 / 1; visibility: hidden; }
+
+#wraithform-button[data-state="inactive"] > span.wraithform-label,
+#wraithform-button[data-state="wraithform"] > span.wraithform-label,
+#wraithform-button[data-state="not-wraithform"] > span.not-wraithform-label { visibility: visible; }
+
+#wraithform-button[data-state="wraithform"] { --button-bg-color: var(--active-button-color); }
+#wraithform-button[data-state="not-wraithform"] { --button-bg-color: var(--negative-button-color); }
+
+#immobility-buttons > button { display: grid; }
+#immobility-buttons > button > span { grid-area: 1 / 1; visibility: hidden; }
+
+#immobility-buttons > button[data-state="inactive"] > span.inactive-label,
+#immobility-buttons > button[data-state="active"] > span.active-label { visibility: visible; }
+
+#all-inputs #immobility-button[data-state="active"],
+#all-inputs #aquatic-anoxia-button[data-state="active"],
+#all-inputs #random-movement-button[data-state="active"] { --button-bg-color: var(--negative-button-color); }
+
+/* Other bonuses block */
+
+#numerical-bonus-buttons > button { 
+	display: grid;
+	--button-bg-color: var(--active-button-color);
+}
+
+#numerical-bonus-buttons > button[data-state="inactive"] { --button-bg-color: var(--inactive-button-color); }
+
+#numerical-bonus-buttons > button > span {
+	grid-area: 1 / 1;
+	visibility: hidden;
+}
+
+#numerical-bonus-buttons > button[data-state="inactive"] > span.inactive-label { visibility: visible; }
+
+#stealth-button[data-state="minus-three-or-better"] > span.minus-three-label { visibility: visible; }
+#stealth-button[data-state="minus-two-or-better"] > span.minus-two-label { visibility: visible; }
+#stealth-button[data-state="minus-one-or-better"] > span.minus-one-label { visibility: visible; }
+#stealth-button[data-state="zero-or-better"] > span.zero-label { visibility: visible; }
+#stealth-button[data-state="one-or-better"] > span.one-label { visibility: visible; }
+#stealth-button[data-state="two-or-better"] > span.two-label { visibility: visible; }
+#stealth-button[data-state="three-or-better"] > span.three-label { visibility: visible; }
+#stealth-button[data-state="four"] > span.four-label { visibility: visible; }
+
+#shooting-button[data-state="extra-shot"] > span.extra-shot-label { visibility: visible; }
+#shooting-button[data-state="plus-two-shots"] > span.plus-two-shots-label { visibility: visible; }
+
+#mana-button[data-state="boosts"] > span.boosts-label { visibility: visible; }
+#mana-button[data-state="greatly-boosts"] > span.greatly-boosts-label { visibility: visible; }
+#mana-button[data-state="best-boost"] > span.best-boost-label { visibility: visible; }
+
+#infra-vision-button[data-state="boosts"] > span.boosts-label { visibility: visible; }
+#infra-vision-button[data-state="greatly-boosts"] > span.greatly-boosts-label { visibility: visible; }
+
+#vampirism-button[data-state="has-vampirism"] > span.has-vampirism-label { visibility: visible; }
+#vampirism-button[data-state="full-vampirism"] > span.full-vampirism-label { visibility: visible; }
+
+#regeneration-button[data-state="has-regen"] > span.has-regen-label { visibility: visible; }
+#regeneration-button[data-state="super-regen"] > span.super-regen-label { visibility: visible; }
+
+#mana-button[data-state="boosts"],
+#mana-button[data-state="greatly-boosts"] { --button-bg-color: var(--bg-l-blue); }
+#mana-button[data-state="best-boost"] { --button-bg-color: var(--bg-blue); }
+
+#vampirism-button[data-state="has-vampirism"] { --button-bg-color: var(--bg-slate); }
+#vampirism-button[data-state="full-vampirism"] { --button-bg-color: var(--bg-l-dark); }
+
+#regeneration-button[data-state="super-regen"] { --button-bg-color: var(--bg-green); }
+
+#all-inputs #fire-aura-button[data-state="active"] { --button-bg-color: var(--bg-fire); }
+#all-inputs #cold-aura-button[data-state="active"] { --button-bg-color: var(--bg-cold); }
+#all-inputs #electric-aura-button[data-state="active"] { --button-bg-color: var(--bg-elec); }
+
+#all-inputs #intrinsic-light-button[data-state="active"] { --button-bg-color: var(--bg-light); }
+
+/* Melee traits block */
+
+#all-inputs #fire-brand-button[data-state="active"] { --button-bg-color: var(--bg-fire); }
+#all-inputs #cold-brand-button[data-state="active"] { --button-bg-color: var(--bg-cold); }
+#all-inputs #electricity-brand-button[data-state="active"] { --button-bg-color: var(--bg-elec); }
+#all-inputs #acid-brand-button[data-state="active"] { --button-bg-color: var(--bg-acid); }
+#all-inputs #poison-brand-button[data-state="active"] { --button-bg-color: var(--bg-poison); }
+#all-inputs #blind-brand-button[data-state="active"] { --button-bg-color: var(--bg-blind); }
+#all-inputs #confuse-brand-button[data-state="active"] { --button-bg-color: var(--bg-confusion); }
+#all-inputs #scare-brand-button[data-state="active"] { --button-bg-color: var(--bg-fear); }
+#all-inputs #stun-brand-button[data-state="active"] { --button-bg-color: var(--bg-stun); }
+
+
+/* Attributes and sustains block */
+
+#attribute-buttons button {
+	display: grid;
+	--button-bg-color: var(--active-button-color);
+	margin: auto;
+	margin-top: 0.5em;
+	width: 100%;
+}
+
+#attribute-buttons button[data-state="inactive"] { --button-bg-color: var(--inactive-button-color); }
+
+#str-button > span, #int-button > span, #dex-button > span, #chr-button > span {
+	grid-area: 1 / 1;
+	visibility: hidden;
+}
+
+#con-buttons {
+	display: flex;
+	flex-direction: column;
+}
+
+#con-buttons > button { display: block; flex-grow: 1; }
+
+#attribute-buttons button[data-state="inactive"] > span.inactive-label { visibility: visible; }
+
+#str-button[data-state="zero-or-better"] > span.zero-label { visibility: visible; }
+#str-button[data-state="one-or-better"] > span.one-label { visibility: visible; }
+#str-button[data-state="two-or-better"] > span.two-label { visibility: visible; }
+#str-button[data-state="three-or-better"] > span.three-label { visibility: visible; }
+#str-button[data-state="four-or-better"] > span.four-label { visibility: visible; }
+#str-button[data-state="five-or-better"] > span.five-label { visibility: visible; }
+#str-button[data-state="six-or-better"] > span.six-label { visibility: visible; }
+#str-button[data-state="ten"] > span.ten-label { visibility: visible; }
+
+#int-button[data-state="zero-or-better"] > span.zero-label { visibility: visible; }
+#int-button[data-state="one-or-better"] > span.one-label { visibility: visible; }
+#int-button[data-state="two-or-better"] > span.two-label { visibility: visible; }
+#int-button[data-state="three-or-better"] > span.three-label { visibility: visible; }
+#int-button[data-state="four-or-better"] > span.four-label { visibility: visible; }
+#int-button[data-state="five-or-better"] > span.five-label { visibility: visible; }
+#int-button[data-state="six"] > span.six-label { visibility: visible; }
+
+#dex-button[data-state="one-or-better"] > span.one-label { visibility: visible; }
+#dex-button[data-state="two"] > span.two-label { visibility: visible; }
+
+#chr-button[data-state="minus-two-or-better"] > span.minus-two-label { visibility: visible; }
+#chr-button[data-state="minus-one-or-better"] > span.minus-one-label { visibility: visible; }
+#chr-button[data-state="zero-or-better"] > span.zero-label { visibility: visible; }
+#chr-button[data-state="one-or-better"] > span.one-label { visibility: visible; }
+#chr-button[data-state="two-or-better"] > span.two-label { visibility: visible; }
+#chr-button[data-state="three"] > span.three-label { visibility: visible; }
+
+
+/* Melee traits block */
+
+#damage-input { font-weight: bold; }
+
+/* Powers block */
+
+#all-inputs #arrow-button[data-state="active"] { --button-bg-color: var(--bg-arrow); }
+#all-inputs #shot-button[data-state="active"] { --button-bg-color: var(--bg-shot); }
+#all-inputs #bolt-button[data-state="active"] { --button-bg-color: var(--bg-bolt); }
+#all-inputs #missile-button[data-state="active"] { --button-bg-color: var(--bg-missile); }
+#all-inputs #boulder-button[data-state="active"] { --button-bg-color: var(--bg-boulder); }
+
+#all-inputs #fire-ball-button[data-state="active"] { --button-bg-color: var(--bg-fire); }
+#all-inputs #cold-ball-button[data-state="active"] { --button-bg-color: var(--bg-cold); }
+#all-inputs #lightning-ball-button[data-state="active"] { --button-bg-color: var(--bg-elec); }
+#all-inputs #acid-ball-button[data-state="active"] { --button-bg-color: var(--bg-acid); }
+#all-inputs #poison-ball-button[data-state="active"] { --button-bg-color: var(--bg-poison); }
+#all-inputs #darkness-ball-button[data-state="active"] { --button-bg-color: var(--bg-darkness); }
+#all-inputs #nether-ball-button[data-state="active"] { --button-bg-color: var(--bg-nether); }
+#all-inputs #chaos-ball-button[data-state="active"] { --button-bg-color: var(--bg-chaos); }
+#all-inputs #water-ball-button[data-state="active"] { --button-bg-color: var(--bg-water); }
+#all-inputs #mana-ball-button[data-state="active"] { --button-bg-color: var(--bg-mana); }
+#all-inputs #toxic-waste-ball-button[data-state="active"] { --button-bg-color: var(--bg-toxic-waste); }
+
+#all-inputs #fire-bolt-button[data-state="active"] { --button-bg-color: var(--bg-fire); }
+#all-inputs #cold-bolt-button[data-state="active"] { --button-bg-color: var(--bg-cold); }
+#all-inputs #lightning-bolt-button[data-state="active"] { --button-bg-color: var(--bg-elec); }
+#all-inputs #acid-bolt-button[data-state="active"] { --button-bg-color: var(--bg-acid); }
+#all-inputs #nether-bolt-button[data-state="active"] { --button-bg-color: var(--bg-nether); }
+#all-inputs #disenchantment-bolt-button[data-state="active"] { --button-bg-color: var(--bg-disenchantment); }
+#all-inputs #water-bolt-button[data-state="active"] { --button-bg-color: var(--bg-water); }
+#all-inputs #mana-bolt-button[data-state="active"] { --button-bg-color: var(--bg-mana); }
+#all-inputs #ice-bolt-button[data-state="active"] { --button-bg-color: var(--bg-ice); }
+#all-inputs #plasma-bolt-button[data-state="active"] { --button-bg-color: var(--bg-plasma); }
+
+#all-inputs #fire-breath-button[data-state="active"] { --button-bg-color: var(--bg-fire); }
+#all-inputs #cold-breath-button[data-state="active"] { --button-bg-color: var(--bg-cold); }
+#all-inputs #lightning-breath-button[data-state="active"] { --button-bg-color: var(--bg-elec); }
+#all-inputs #acid-breath-button[data-state="active"] { --button-bg-color: var(--bg-acid); }
+#all-inputs #poison-breath-button[data-state="active"] { --button-bg-color: var(--bg-poison); }
+#all-inputs #light-breath-button[data-state="active"] { --button-bg-color: var(--bg-light); }
+#all-inputs #darkness-breath-button[data-state="active"] { --button-bg-color: var(--bg-darkness); }
+#all-inputs #sound-breath-button[data-state="active"] { --button-bg-color: var(--bg-sound); }
+#all-inputs #shards-breath-button[data-state="active"] { --button-bg-color: var(--bg-shards); }
+#all-inputs #nexus-breath-button[data-state="active"] { --button-bg-color: var(--bg-nexus); }
+#all-inputs #nether-breath-button[data-state="active"] { --button-bg-color: var(--bg-nether); }
+#all-inputs #confusion-breath-button[data-state="active"] { --button-bg-color: var(--bg-confusion); }
+#all-inputs #chaos-breath-button[data-state="active"] { --button-bg-color: var(--bg-chaos); }
+#all-inputs #disenchantment-breath-button[data-state="active"] { --button-bg-color: var(--bg-disenchantment); }
+#all-inputs #water-breath-button[data-state="active"] { --button-bg-color: var(--bg-water); }
+#all-inputs #time-breath-button[data-state="active"] { --button-bg-color: var(--bg-time); }
+#all-inputs #mana-breath-button[data-state="active"] { --button-bg-color: var(--bg-mana); }
+#all-inputs #gravity-breath-button[data-state="active"] { --button-bg-color: var(--bg-gravity); }
+#all-inputs #inertia-breath-button[data-state="active"] { --button-bg-color: var(--bg-inertia); }
+#all-inputs #toxic-waste-breath-button[data-state="active"] { --button-bg-color: var(--bg-toxic-waste); }
+#all-inputs #plasma-breath-button[data-state="active"] { --button-bg-color: var(--bg-plasma); }
+#all-inputs #force-breath-button[data-state="active"] { --button-bg-color: var(--bg-force); }
+#all-inputs #disintegration-breath-button[data-state="active"] { --button-bg-color: var(--bg-disintegration); }
+
+#all-inputs #magic-missile-button[data-state="active"] { --button-bg-color: var(--bg-force); }
+#all-inputs #cause-wounds-button[data-state="active"] { --button-bg-color: var(--bg-cause); }
+#all-inputs #mind-blast-button[data-state="active"] { --button-bg-color: var(--bg-psi); }
+#all-inputs #brain-smash-button[data-state="active"] { --button-bg-color: var(--bg-psi2); }
+#all-inputs #fire-rocket-button[data-state="active"] { --button-bg-color: var(--bg-rocket); }
+
+#all-inputs #blind-button[data-state="active"] { --button-bg-color: var(--bg-blind); }
+#all-inputs #confusion-button[data-state="active"] { --button-bg-color: var(--bg-confusion); }
+#all-inputs #paralyze-button[data-state="active"] { --button-bg-color: var(--bg-paralysis); }
+#all-inputs #scare-button[data-state="active"] { --button-bg-color: var(--bg-fear); }
+#all-inputs #slow-button[data-state="active"] { --button-bg-color: var(--bg-slow); }
+#all-inputs #teleport-away-button[data-state="active"] { --button-bg-color: var(--bg-teleport); }
+#all-inputs #teleport-to-button[data-state="active"] { --button-bg-color: var(--bg-teleport); }
+
+#all-inputs #blink-button[data-state="active"] { --button-bg-color: var(--bg-teleport); }
+#all-inputs #haste-self-button[data-state="active"] { --button-bg-color: var(--bg-haste); }
+#all-inputs #heal-button[data-state="active"] { --button-bg-color: var(--bg-heal); }
+#all-inputs #shriek-button[data-state="active"] { --button-bg-color: var(--bg-shriek); }
+#all-inputs #teleport-button[data-state="active"] { --button-bg-color: var(--bg-teleport); }
+
+/* Results section */
+
+#results {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(25em, 1fr));
+	/*grid-template-columns: 1fr 1fr 1fr;*/
+	gap: 0.3em;
+	margin-bottom: 2em;
+}
+
+#results div {
+	background-color: #EEEEEE;
+	font-size: 1.3em;
+	display: flex;
+}
+
+#results div::before {
+  content: "";
+  width: 1.83em; height: 100%;
+  background: #000;
+}
+
+#results div > span.appearance {
+	width: 1.5em;
+	font-family: monospace;
+	font-size: 1.5em;
+	margin-left: -1.5em;
+}
+
+/* Flat colors */
+
+#results div.attr-d > span.appearance { color: var(--term-dark); }
+#results div.attr-w > span.appearance { color: var(--term-white); }
+#results div.attr-s > span.appearance { color: var(--term-slate); }
+#results div.attr-o > span.appearance { color: var(--term-orange); }
+#results div.attr-r > span.appearance { color: var(--term-red); }
+#results div.attr-g > span.appearance { color: var(--term-green); }
+#results div.attr-b > span.appearance { color: var(--term-blue); }
+#results div.attr-u > span.appearance { color: var(--term-umber); }
+#results div.attr-big-d > span.appearance { color: var(--term-l-dark); }
+#results div.attr-big-w > span.appearance { color: var(--term-l-white); }
+#results div.attr-v > span.appearance { color: var(--term-violet); }
+#results div.attr-y > span.appearance { color: var(--term-yellow); }
+#results div.attr-big-r > span.appearance { color: var(--term-l-red); }
+#results div.attr-big-g > span.appearance { color: var(--term-l-green); }
+#results div.attr-big-b > span.appearance { color: var(--term-l-blue); }
+#results div.attr-big-u > span.appearance { color: var(--term-l-umber); }
+
+/* Flicker colors */
+
+#results div.attr-big-a > span.appearance,
+#results div.attr-c > span.appearance,
+#results div.attr-big-c > span.appearance,
+#results div.attr-e > span.appearance,
+#results div.attr-f > span.appearance,
+#results div.attr-h > span.appearance,
+#results div.attr-big-h > span.appearance,
+#results div.attr-big-i > span.appearance,
+#results div.attr-big-k > span.appearance,
+#results div.attr-big-l > span.appearance,
+#results div.attr-m > span.appearance,
+#results div.attr-q > span.appearance,
+#results div.attr-big-s > span.appearance,
+#results div.attr-big-z > span.appearance {
+	background-repeat: repeat;
+	-webkit-background-clip: text;
+	background-clip: text;
+	color: transparent;
+}
+
+#results div.attr-big-a > span.appearance { background-image: url("./term_darkness.gif"); }
+#results div.attr-c > span.appearance { background-image: url("./term_cold.gif"); } /* cold: COMPLETE */
+#results div.attr-big-c > span.appearance { background-image: url("./term_conf.gif"); } /* confusion: COMPLETE */
+#results div.attr-e > span.appearance { background-image: url("./term_elec.gif"); } /* elec: COMPLETE */
+#results div.attr-f > span.appearance { background-image: url("./term_fire.gif"); } /* fire: COMPLETE */
+#results div.attr-h > span.appearance { background-image: url("./term_half.gif"); } /* half */
+#results div.attr-big-h > span.appearance { background-image: url("./term_shar.gif"); } /* shards */
+#results div.attr-big-i > span.appearance { background-image: url("./term_shieldi.gif"); } /* shieldi: COMPLETE */
+#results div.attr-big-k > span.appearance { background-image: url("./term_unbreath.gif"); } /* unbreath: COMPLETE */
+#results div.attr-big-l > span.appearance { background-image: url("./term_lite.gif"); } /* light: COMPLETE */
+#results div.attr-m > span.appearance { background-image: url("./term_multi.gif"); } /* multihued */
+#results div.attr-q > span.appearance { background-image: url("./term_iner.gif"); } /* inertia: COMPLETE */
+#results div.attr-big-s > span.appearance { background-image: url("./term_soun.gif"); } /* sound: COMPLETE */
+#results div.attr-big-z > span.appearance { background-image: url("./term_ember.gif"); } /* ember */
+
+#results div > span.name {
+	flex-grow: 1;
+	padding: 0.2em;
+}
+
+/* Stats filtering */
+
+#results div[data-level-low], #results div[data-level-high],
+#results div[data-hp-low], #results div[data-hp-high],
+#results div[data-speed-low], #results div[data-speed-high],
+#results div[data-ac-low], #results div[data-ac-high],
+#results div[data-damage-low], #results div[data-damage-high] {
+	display: none;
+}
+
+/* Class and limb filtering */
+
+#all-inputs[data-class-switch-button-state="shaman"] + #results > div.non-shaman,
+#all-inputs[data-class-switch-button-state="druid"] + #results > div.non-druid {
+	display: none;
+}
+
+#all-inputs[data-class-switch-button-state="mimic"][data-weapon-limb-button-state="active"] + #results > div.no-weapon,
+#all-inputs[data-class-switch-button-state="mimic"][data-ring-limb-button-state="active"] + #results > div.no-ring,
+#all-inputs[data-class-switch-button-state="mimic"][data-helm-amulet-limb-button-state="active"] + #results > div.no-helm,
+#all-inputs[data-class-switch-button-state="mimic"][data-light-source-limb-button-state="active"] + #results > div.no-light,
+#all-inputs[data-class-switch-button-state="mimic"][data-armor-cloak-limb-button-state="active"] + #results > div.no-armor,
+#all-inputs[data-class-switch-button-state="mimic"][data-shield-limb-button-state="active"] + #results > div.no-shield,
+#all-inputs[data-class-switch-button-state="mimic"][data-tool-limb-button-state="active"] + #results > div.no-tools,
+#all-inputs[data-class-switch-button-state="mimic"][data-glove-limb-button-state="active"] + #results > div.no-gloves,
+#all-inputs[data-class-switch-button-state="mimic"][data-boot-limb-button-state="active"] + #results > div.no-boots {
+	display: none;
+}
+
+#all-inputs[data-class-switch-button-state="shaman"][data-weapon-limb-button-state="active"] + #results > div.no-weapon.no-shaman-full-equip,
+#all-inputs[data-class-switch-button-state="shaman"][data-ring-limb-button-state="active"] + #results > div.no-ring.no-shaman-full-equip,
+#all-inputs[data-class-switch-button-state="shaman"][data-helm-amulet-limb-button-state="active"] + #results > div.no-helm.no-shaman-full-equip,
+#all-inputs[data-class-switch-button-state="shaman"][data-light-source-limb-button-state="active"] + #results > div.no-light.no-shaman-full-equip,
+#all-inputs[data-class-switch-button-state="shaman"][data-armor-cloak-limb-button-state="active"] + #results > div.no-armor.no-shaman-full-equip,
+#all-inputs[data-class-switch-button-state="shaman"][data-shield-limb-button-state="active"] + #results > div.no-shield.no-shaman-full-equip,
+#all-inputs[data-class-switch-button-state="shaman"][data-tool-limb-button-state="active"] + #results > div.no-tools.no-shaman-full-equip,
+#all-inputs[data-class-switch-button-state="shaman"][data-glove-limb-button-state="active"] + #results > div.no-gloves.no-shaman-full-equip,
+#all-inputs[data-class-switch-button-state="shaman"][data-boot-limb-button-state="active"] + #results > div.no-boots.no-shaman-full-equip {
+	display: none;
+}
+
+/* Resistance and immunity filtering */
+
+#all-inputs[data-fire-res-button-state="resists"] + #results > div.suscep-fire,
+#all-inputs[data-fire-res-button-state="resists"] + #results > div.no-res-fire,
+#all-inputs[data-fire-res-button-state="immune"] + #results > div.suscep-fire,
+#all-inputs[data-fire-res-button-state="immune"] + #results > div.no-res-fire,
+#all-inputs[data-fire-res-button-state="immune"] + #results > div.res-fire,
+#all-inputs[data-cold-res-button-state="resists"] + #results > div.suscep-cold,
+#all-inputs[data-cold-res-button-state="resists"] + #results > div.no-res-cold,
+#all-inputs[data-cold-res-button-state="immune"] + #results > div.suscep-cold,
+#all-inputs[data-cold-res-button-state="immune"] + #results > div.no-res-cold,
+#all-inputs[data-cold-res-button-state="immune"] + #results > div.res-cold,
+#all-inputs[data-electricity-res-button-state="resists"] + #results > div.suscep-elec,
+#all-inputs[data-electricity-res-button-state="resists"] + #results > div.no-res-elec,
+#all-inputs[data-electricity-res-button-state="immune"] + #results > div.suscep-elec,
+#all-inputs[data-electricity-res-button-state="immune"] + #results > div.no-res-elec,
+#all-inputs[data-electricity-res-button-state="immune"] + #results > div.res-elec,
+#all-inputs[data-acid-res-button-state="resists"] + #results > div.suscep-acid,
+#all-inputs[data-acid-res-button-state="resists"] + #results > div.no-res-acid,
+#all-inputs[data-acid-res-button-state="immune"] + #results > div.suscep-acid,
+#all-inputs[data-acid-res-button-state="immune"] + #results > div.no-res-acid,
+#all-inputs[data-acid-res-button-state="immune"] + #results > div.res-acid,
+#all-inputs[data-poison-res-button-state="resists"] + #results > div.no-res-poison,
+#all-inputs[data-poison-res-button-state="immune"] + #results > div.no-res-poison,
+#all-inputs[data-poison-res-button-state="immune"] + #results > div.res-poison,
+#all-inputs[data-water-res-button-state="resists"] + #results > div.no-res-water,
+#all-inputs[data-water-res-button-state="immune"] + #results > div.no-res-water,
+#all-inputs[data-water-res-button-state="immune"] + #results > div.res-water {
+	display: none;
+}
+
+#all-inputs[data-light-res-button-state="active"] + #results > div.suscep-light,
+#all-inputs[data-light-res-button-state="active"] + #results > div.no-res-light,
+#all-inputs[data-dark-res-button-state="active"] + #results > div.no-res-dark,
+#all-inputs[data-sound-res-button-state="active"] + #results > div.no-res-sound,
+#all-inputs[data-shards-res-button-state="active"] + #results > div.no-res-shards,
+#all-inputs[data-nether-res-button-state="active"] + #results > div.no-res-nether,
+#all-inputs[data-nexus-res-button-state="active"] + #results > div.no-res-nexus,
+#all-inputs[data-chaos-res-button-state="active"] + #results > div.no-res-chaos,
+#all-inputs[data-disenchantment-res-button-state="active"] + #results > div.no-res-dise,
+#all-inputs[data-time-res-button-state="active"] + #results > div.no-res-time,
+#all-inputs[data-mana-res-button-state="active"] + #results > div.no-res-mana,
+#all-inputs[data-psi-res-button-state="resists"] + #results > div.no-res-psi,
+#all-inputs[data-psi-res-button-state="resists-greatly"] + #results > div.no-res-psi,
+#all-inputs[data-psi-res-button-state="resists-greatly"] + #results > div.res-psi {
+	display: none;
+}
+
+#all-inputs[data-fear-res-button-state="active"] + #results > div.no-res-fear,
+#all-inputs[data-blindness-res-button-state="active"] + #results > div.no-res-blind,
+#all-inputs[data-confusion-res-button-state="active"] + #results > div.no-res-conf,
+#all-inputs[data-teleportation-res-button-state="active"] + #results > div.no-res-tele,
+#all-inputs[data-paralysis-res-button-state="active"] + #results > div.no-free-action,
+#all-inputs[data-cut-res-button-state="active"] + #results > div.yes-cut {
+	display: none;
+}
+
+/* Mobility filtering */
+
+#all-inputs[data-levitation-button-state="active"] + #results > div.no-levitate,
+#all-inputs[data-feather-falling-button-state="active"] + #results > div.no-feather,
+#all-inputs[data-passing-trees-button-state="active"] + #results > div.no-pass-trees,
+#all-inputs[data-swimming-button-state="active"] + #results > div.no-swim,
+#all-inputs[data-climbing-button-state="active"] + #results > div.no-climb,
+#all-inputs[data-webwalking-button-state="active"] + #results > div.no-webwalk,
+#all-inputs[data-wraithform-button-state="wraithform"] + #results > div.not-wraith,
+#all-inputs[data-wraithform-button-state="not-wraithform"] + #results > div.wraith,
+#all-inputs[data-easy-tunneling-button-state="active"] + #results > div.normal-tunnel,
+#all-inputs[data-immobility-button-state="active"] + #results > div.immobile,
+#all-inputs[data-aquatic-anoxia-button-state="active"] + #results > div.anoxia,
+#all-inputs[data-class-switch-button-state="mimic"][data-random-movement-button-state="active"] + #results > div.rand-move {
+	display: none;
+}
+
+/* Other bonuses filtering */
+
+#all-inputs[data-stealth-button-state="minus-three-or-better"] + #results > div.stealth-m-four,
+#all-inputs[data-stealth-button-state="minus-two-or-better"] + #results > div.stealth-m-four,
+#all-inputs[data-stealth-button-state="minus-two-or-better"] + #results > div.stealth-m-three,
+#all-inputs[data-stealth-button-state="minus-one-or-better"] + #results > div.stealth-m-four,
+#all-inputs[data-stealth-button-state="minus-one-or-better"] + #results > div.stealth-m-three,
+#all-inputs[data-stealth-button-state="minus-one-or-better"] + #results > div.stealth-m-two,
+#all-inputs[data-stealth-button-state="zero-or-better"] + #results > div.stealth-m-four,
+#all-inputs[data-stealth-button-state="zero-or-better"] + #results > div.stealth-m-three,
+#all-inputs[data-stealth-button-state="zero-or-better"] + #results > div.stealth-m-two,
+#all-inputs[data-stealth-button-state="zero-or-better"] + #results > div.stealth-m-one,
+#all-inputs[data-stealth-button-state="one-or-better"] + #results > div.stealth-m-four,
+#all-inputs[data-stealth-button-state="one-or-better"] + #results > div.stealth-m-three,
+#all-inputs[data-stealth-button-state="one-or-better"] + #results > div.stealth-m-two,
+#all-inputs[data-stealth-button-state="one-or-better"] + #results > div.stealth-m-one,
+#all-inputs[data-stealth-button-state="one-or-better"] + #results > div.stealth-zero,
+#all-inputs[data-stealth-button-state="two-or-better"] + #results > div.stealth-m-four,
+#all-inputs[data-stealth-button-state="two-or-better"] + #results > div.stealth-m-three,
+#all-inputs[data-stealth-button-state="two-or-better"] + #results > div.stealth-m-two,
+#all-inputs[data-stealth-button-state="two-or-better"] + #results > div.stealth-m-one,
+#all-inputs[data-stealth-button-state="two-or-better"] + #results > div.stealth-zero,
+#all-inputs[data-stealth-button-state="two-or-better"] + #results > div.stealth-one,
+#all-inputs[data-stealth-button-state="three-or-better"] + #results > div.stealth-m-four,
+#all-inputs[data-stealth-button-state="three-or-better"] + #results > div.stealth-m-three,
+#all-inputs[data-stealth-button-state="three-or-better"] + #results > div.stealth-m-two,
+#all-inputs[data-stealth-button-state="three-or-better"] + #results > div.stealth-m-one,
+#all-inputs[data-stealth-button-state="three-or-better"] + #results > div.stealth-zero,
+#all-inputs[data-stealth-button-state="three-or-better"] + #results > div.stealth-one,
+#all-inputs[data-stealth-button-state="three-or-better"] + #results > div.stealth-two,
+#all-inputs[data-stealth-button-state="four"] + #results > div.stealth-m-four,
+#all-inputs[data-stealth-button-state="four"] + #results > div.stealth-m-three,
+#all-inputs[data-stealth-button-state="four"] + #results > div.stealth-m-two,
+#all-inputs[data-stealth-button-state="four"] + #results > div.stealth-m-one,
+#all-inputs[data-stealth-button-state="four"] + #results > div.stealth-zero,
+#all-inputs[data-stealth-button-state="four"] + #results > div.stealth-one,
+#all-inputs[data-stealth-button-state="four"] + #results > div.stealth-two,
+#all-inputs[data-stealth-button-state="four"] + #results > div.stealth-three {
+	display: none;
+}
+
+#all-inputs[data-shooting-button-state="extra-shot"] + #results > div.no-extra-shot,
+#all-inputs[data-shooting-button-state="plus-two-shots"] + #results > div.no-extra-shot,
+#all-inputs[data-shooting-button-state="plus-two-shots"] + #results > div.extra-shot {
+	display: none;
+}
+
+#all-inputs[data-mana-button-state="boosts"] + #results > div.no-plus-mp,
+#all-inputs[data-mana-button-state="greatly-boosts"] + #results > div.no-plus-mp,
+#all-inputs[data-mana-button-state="greatly-boosts"] + #results > div.plus-two-mp,
+#all-inputs[data-mana-button-state="best-boost"] + #results > div.no-plus-mp,
+#all-inputs[data-mana-button-state="best-boost"] + #results > div.plus-two-mp,
+#all-inputs[data-mana-button-state="best-boost"] + #results > div.plus-three-mp {
+	display: none;
+}
+
+#all-inputs[data-infra-vision-button-state="boosts"] + #results > div.no-infra,
+#all-inputs[data-infra-vision-button-state="greatly-boosts"] + #results > div.no-infra,
+#all-inputs[data-infra-vision-button-state="greatly-boosts"] + #results > div.plus-two-infra {
+	display: none;
+}
+
+#all-inputs[data-vampirism-button-state="has-vampirism"] + #results > div.no-vamp,
+#all-inputs[data-vampirism-button-state="full-vampirism"] + #results > div.no-vamp,
+#all-inputs[data-vampirism-button-state="full-vampirism"] + #results > div.half-vamp {
+	display: none;
+}
+
+#all-inputs[data-regeneration-button-state="has-regen"] + #results > div.no-regen,
+#all-inputs[data-regeneration-button-state="super-regen"] + #results > div.no-regen,
+#all-inputs[data-regeneration-button-state="super-regen"] + #results > div.regen {
+	display: none;
+}
+
+#all-inputs[data-fire-aura-button-state="active"] + #results > div.no-aura-fire,
+#all-inputs[data-cold-aura-button-state="active"] + #results > div.no-aura-cold,
+#all-inputs[data-electric-aura-button-state="active"] + #results > div.no-aura-elec,
+#all-inputs[data-see-invisible-button-state="active"] + #results > div.no-see-inv,
+#all-inputs[data-invisibility-button-state="active"] + #results > div.no-invis,
+#all-inputs[data-reflection-button-state="active"] + #results > div.no-reflect,
+#all-inputs[data-disbelief-button-state="active"] + #results > div.no-disbelieve,
+#all-inputs[data-intrinsic-light-button-state="active"] + #results > div.no-glow,
+#all-inputs[data-esp-dragons-button-state="active"] + #results > div.no-esp-dragon,
+#all-inputs[data-powerful-button-state="active"] + #results > div.not-powerful {
+	display: none;
+}
+
+/* Brands filtering */
+
+#all-inputs[data-fire-brand-button-state="active"] + #results > div.no-fire-brand,
+#all-inputs[data-cold-brand-button-state="active"] + #results > div.no-cold-brand,
+#all-inputs[data-electricity-brand-button-state="active"] + #results > div.no-elec-brand,
+#all-inputs[data-acid-brand-button-state="active"] + #results > div.no-acid-brand,
+#all-inputs[data-poison-brand-button-state="active"] + #results > div.no-poison-brand,
+#all-inputs[data-blind-brand-button-state="active"] + #results > div.no-blind-brand,
+#all-inputs[data-confuse-brand-button-state="active"] + #results > div.no-conf-brand,
+#all-inputs[data-scare-brand-button-state="active"] + #results > div.no-scare-brand,
+#all-inputs[data-stun-brand-button-state="active"] + #results > div.no-stun-brand {
+	display: none;
+}
+
+/* Attributes and sustains filtering */
+
+#all-inputs[data-sustain-str-button-state="active"] + #results > div.no-sus-str,
+#all-inputs[data-sustain-int-button-state="active"] + #results > div.no-sus-int,
+#all-inputs[data-sustain-wis-button-state="active"] + #results > div.no-sus-wis,
+#all-inputs[data-sustain-dex-button-state="active"] + #results > div.no-sus-dex,
+#all-inputs[data-sustain-con-button-state="active"] + #results > div.no-sus-con,
+#all-inputs[data-sustain-chr-button-state="active"] + #results > div.no-sus-chr {
+	display: none;
+}
+
+#all-inputs[data-str-button-state="zero-or-better"] + #results > div.str-m-one,
+#all-inputs[data-str-button-state="one-or-better"] + #results > div.str-m-one,
+#all-inputs[data-str-button-state="one-or-better"] + #results > div.str-zero,
+#all-inputs[data-str-button-state="two-better"] + #results > div.str-m-one,
+#all-inputs[data-str-button-state="two-or-better"] + #results > div.str-zero,
+#all-inputs[data-str-button-state="two-one-or-better"] + #results > div.str-one,
+#all-inputs[data-str-button-state="three-or-better"] + #results > div.str-m-one,
+#all-inputs[data-str-button-state="three-or-better"] + #results > div.str-zero,
+#all-inputs[data-str-button-state="three-or-better"] + #results > div.str-one,
+#all-inputs[data-str-button-state="three-or-better"] + #results > div.str-two,
+#all-inputs[data-str-button-state="four-or-better"] + #results > div.str-m-one,
+#all-inputs[data-str-button-state="four-or-better"] + #results > div.str-zero,
+#all-inputs[data-str-button-state="four-or-better"] + #results > div.str-one,
+#all-inputs[data-str-button-state="four-or-better"] + #results > div.str-two,
+#all-inputs[data-str-button-state="four-or-better"] + #results > div.str-three,
+#all-inputs[data-str-button-state="five-or-better"] + #results > div.str-m-one,
+#all-inputs[data-str-button-state="five-or-better"] + #results > div.str-zero,
+#all-inputs[data-str-button-state="five-or-better"] + #results > div.str-one,
+#all-inputs[data-str-button-state="five-or-better"] + #results > div.str-two,
+#all-inputs[data-str-button-state="five-or-better"] + #results > div.str-three,
+#all-inputs[data-str-button-state="five-or-better"] + #results > div.str-four,
+#all-inputs[data-str-button-state="six-or-better"] + #results > div.str-m-one,
+#all-inputs[data-str-button-state="six-or-better"] + #results > div.str-zero,
+#all-inputs[data-str-button-state="six-or-better"] + #results > div.str-one,
+#all-inputs[data-str-button-state="six-or-better"] + #results > div.str-two,
+#all-inputs[data-str-button-state="six-or-better"] + #results > div.str-three,
+#all-inputs[data-str-button-state="six-or-better"] + #results > div.str-four,
+#all-inputs[data-str-button-state="six-or-better"] + #results > div.str-five,
+#all-inputs[data-str-button-state="ten"] + #results > div.str-m-one,
+#all-inputs[data-str-button-state="ten"] + #results > div.str-zero,
+#all-inputs[data-str-button-state="ten"] + #results > div.str-one,
+#all-inputs[data-str-button-state="ten"] + #results > div.str-two,
+#all-inputs[data-str-button-state="ten"] + #results > div.str-three,
+#all-inputs[data-str-button-state="ten"] + #results > div.str-four,
+#all-inputs[data-str-button-state="ten"] + #results > div.str-five,
+#all-inputs[data-str-button-state="ten"] + #results > div.str-six {
+	display: none;
+}
+
+#all-inputs[data-int-button-state="zero-or-better"] + #results > div.int-m-two,
+#all-inputs[data-int-button-state="one-or-better"] + #results > div.int-m-two,
+#all-inputs[data-int-button-state="one-or-better"] + #results > div.int-zero,
+#all-inputs[data-int-button-state="two-better"] + #results > div.int-m-two,
+#all-inputs[data-int-button-state="two-or-better"] + #results > div.int-zero,
+#all-inputs[data-int-button-state="two-one-or-better"] + #results > div.int-one,
+#all-inputs[data-int-button-state="three-or-better"] + #results > div.int-m-two,
+#all-inputs[data-int-button-state="three-or-better"] + #results > div.int-zero,
+#all-inputs[data-int-button-state="three-or-better"] + #results > div.int-one,
+#all-inputs[data-int-button-state="three-or-better"] + #results > div.int-two,
+#all-inputs[data-int-button-state="four-or-better"] + #results > div.int-m-two,
+#all-inputs[data-int-button-state="four-or-better"] + #results > div.int-zero,
+#all-inputs[data-int-button-state="four-or-better"] + #results > div.int-one,
+#all-inputs[data-int-button-state="four-or-better"] + #results > div.int-two,
+#all-inputs[data-int-button-state="four-or-better"] + #results > div.int-three,
+#all-inputs[data-int-button-state="five-or-better"] + #results > div.int-m-two,
+#all-inputs[data-int-button-state="five-or-better"] + #results > div.int-zero,
+#all-inputs[data-int-button-state="five-or-better"] + #results > div.int-one,
+#all-inputs[data-int-button-state="five-or-better"] + #results > div.int-two,
+#all-inputs[data-int-button-state="five-or-better"] + #results > div.int-three,
+#all-inputs[data-int-button-state="five-or-better"] + #results > div.int-four,
+#all-inputs[data-int-button-state="six"] + #results > div.int-m-two,
+#all-inputs[data-int-button-state="six"] + #results > div.int-zero,
+#all-inputs[data-int-button-state="six"] + #results > div.int-one,
+#all-inputs[data-int-button-state="six"] + #results > div.int-two,
+#all-inputs[data-int-button-state="six"] + #results > div.int-three,
+#all-inputs[data-int-button-state="six"] + #results > div.int-four,
+#all-inputs[data-int-button-state="six"] + #results > div.int-five {
+	display: none;
+}
+
+#all-inputs[data-wis-button-state="active"] + #results > div.wis-zero {
+	display: none;
+}
+
+#all-inputs[data-dex-button-state="one-or-better"] + #results > div.dex-zero,
+#all-inputs[data-dex-button-state="two"] + #results > div.dex-zero,
+#all-inputs[data-dex-button-state="two"] + #results > div.dex-one {
+	display: none;
+}
+
+#all-inputs[data-chr-button-state="minus-two-or-better"] + #results > div.chr-m-three,
+#all-inputs[data-chr-button-state="minus-one-or-better"] + #results > div.chr-m-three,
+#all-inputs[data-chr-button-state="minus-one-or-better"] + #results > div.chr-m-two,
+#all-inputs[data-chr-button-state="zero-or-better"] + #results > div.chr-m-three,
+#all-inputs[data-chr-button-state="zero-or-better"] + #results > div.chr-m-two,
+#all-inputs[data-chr-button-state="zero-or-better"] + #results > div.chr-m-one,
+#all-inputs[data-chr-button-state="one-or-better"] + #results > div.chr-m-three,
+#all-inputs[data-chr-button-state="one-or-better"] + #results > div.chr-m-two,
+#all-inputs[data-chr-button-state="one-or-better"] + #results > div.chr-m-one,
+#all-inputs[data-chr-button-state="one-or-better"] + #results > div.chr-zero,
+#all-inputs[data-chr-button-state="two-or-better"] + #results > div.chr-m-three,
+#all-inputs[data-chr-button-state="two-or-better"] + #results > div.chr-m-two,
+#all-inputs[data-chr-button-state="two-or-better"] + #results > div.chr-m-one,
+#all-inputs[data-chr-button-state="two-or-better"] + #results > div.chr-zero,
+#all-inputs[data-chr-button-state="two-or-better"] + #results > div.chr-one,
+#all-inputs[data-chr-button-state="three"] + #results > div.chr-m-three,
+#all-inputs[data-chr-button-state="three"] + #results > div.chr-m-two,
+#all-inputs[data-chr-button-state="three"] + #results > div.chr-m-one,
+#all-inputs[data-chr-button-state="three"] + #results > div.chr-zero,
+#all-inputs[data-chr-button-state="three"] + #results > div.chr-one,
+#all-inputs[data-chr-button-state="three"] + #results > div.chr-two {
+	display: none;
+}
+
+/* Power filters */
+
+#all-inputs[data-arrow-button-state="active"] + #results > div.no-arrow-1,
+#all-inputs[data-shot-button-state="active"] + #results > div.no-arrow-2,
+#all-inputs[data-bolt-button-state="active"] + #results > div.no-arrow-3,
+#all-inputs[data-missile-button-state="active"] + #results > div.no-arrow-4,
+#all-inputs[data-boulder-button-state="active"] + #results > div.no-boulder,
+#all-inputs[data-fire-ball-button-state="active"] + #results > div.no-ba-fire,
+#all-inputs[data-cold-ball-button-state="active"] + #results > div.no-ba-cold,
+#all-inputs[data-lightning-ball-button-state="active"] + #results > div.no-ba-elec,
+#all-inputs[data-acid-ball-button-state="active"] + #results > div.no-ba-acid,
+#all-inputs[data-poison-ball-button-state="active"] + #results > div.no-ba-poison,
+#all-inputs[data-darkness-ball-button-state="active"] + #results > div.no-ba-dark,
+#all-inputs[data-nether-ball-button-state="active"] + #results > div.no-ba-neth,
+#all-inputs[data-chaos-ball-button-state="active"] + #results > div.no-ba-chaos,
+#all-inputs[data-water-ball-button-state="active"] + #results > div.no-ba-water,
+#all-inputs[data-mana-ball-button-state="active"] + #results > div.no-ba-mana,
+#all-inputs[data-toxic-waste-ball-button-state="active"] + #results > div.no-ba-nuke,
+#all-inputs[data-fire-bolt-button-state="active"] + #results > div.no-bo-fire,
+#all-inputs[data-cold-bolt-button-state="active"] + #results > div.no-bo-cold,
+#all-inputs[data-lightning-bolt-button-state="active"] + #results > div.no-bo-elec,
+#all-inputs[data-acid-bolt-button-state="active"] + #results > div.no-bo-acid,
+#all-inputs[data-nether-bolt-button-state="active"] + #results > div.no-bo-neth,
+#all-inputs[data-disenchantment-bolt-button-state="active"] + #results > div.no-bo-dise,
+#all-inputs[data-water-bolt-button-state="active"] + #results > div.no-bo-water,
+#all-inputs[data-mana-bolt-button-state="active"] + #results > div.no-bo-mana,
+#all-inputs[data-ice-bolt-button-state="active"] + #results > div.no-bo-ice,
+#all-inputs[data-plasma-bolt-button-state="active"] + #results > div.no-bo-plasma,
+#all-inputs[data-fire-breath-button-state="active"] + #results > div.no-br-fire,
+#all-inputs[data-cold-breath-button-state="active"] + #results > div.no-br-cold,
+#all-inputs[data-lightning-breath-button-state="active"] + #results > div.no-br-elec,
+#all-inputs[data-acid-breath-button-state="active"] + #results > div.no-br-acid,
+#all-inputs[data-poison-breath-button-state="active"] + #results > div.no-br-poison,
+#all-inputs[data-light-breath-button-state="active"] + #results > div.no-br-light,
+#all-inputs[data-darkness-breath-button-state="active"] + #results > div.no-br-dark,
+#all-inputs[data-sound-breath-button-state="active"] + #results > div.no-br-sound,
+#all-inputs[data-shards-breath-button-state="active"] + #results > div.no-br-shard,
+#all-inputs[data-nexus-breath-button-state="active"] + #results > div.no-br-nexus,
+#all-inputs[data-nether-breath-button-state="active"] + #results > div.no-br-neth,
+#all-inputs[data-confusion-breath-button-state="active"] + #results > div.no-br-conf,
+#all-inputs[data-chaos-breath-button-state="active"] + #results > div.no-br-chaos,
+#all-inputs[data-disenchantment-breath-button-state="active"] + #results > div.no-br-dise,
+#all-inputs[data-water-breath-button-state="active"] + #results > div.no-br-water,
+#all-inputs[data-time-breath-button-state="active"] + #results > div.no-br-time,
+#all-inputs[data-mana-breath-button-state="active"] + #results > div.no-br-mana,
+#all-inputs[data-gravity-breath-button-state="active"] + #results > div.no-br-grav,
+#all-inputs[data-inertia-breath-button-state="active"] + #results > div.no-br-iner,
+#all-inputs[data-toxic-waste-breath-button-state="active"] + #results > div.no-br-nuke,
+#all-inputs[data-plasma-breath-button-state="active"] + #results > div.no-br-plasma,
+#all-inputs[data-force-breath-button-state="active"] + #results > div.no-br-force,
+#all-inputs[data-disintegration-breath-button-state="active"] + #results > div.no-br-disi,
+#all-inputs[data-magic-missile-button-state="active"] + #results > div.no-magic-missile,
+#all-inputs[data-cause-wounds-button-state="active"] + #results > div.no-cause,
+#all-inputs[data-mind-blast-button-state="active"] + #results > div.no-mblast,
+#all-inputs[data-brain-smash-button-state="active"] + #results > div.no-bsmash,
+#all-inputs[data-fire-rocket-button-state="active"] + #results > div.no-rocket,
+#all-inputs[data-blind-button-state="active"] + #results > div.no-blind,
+#all-inputs[data-confusion-button-state="active"] + #results > div.no-confuse,
+#all-inputs[data-paralyze-button-state="active"] + #results > div.no-paralyze,
+#all-inputs[data-scare-button-state="active"] + #results > div.no-scare,
+#all-inputs[data-slow-button-state="active"] + #results > div.no-slow,
+#all-inputs[data-teleport-away-button-state="active"] + #results > div.no-tele-away,
+#all-inputs[data-teleport-to-button-state="active"] + #results > div.no-tele-to,
+#all-inputs[data-blink-button-state="active"] + #results > div.no-blink,
+#all-inputs[data-haste-self-button-state="active"] + #results > div.no-haste,
+#all-inputs[data-heal-button-state="active"] + #results > div.no-heal,
+#all-inputs[data-shriek-button-state="active"] + #results > div.no-shriek,
+#all-inputs[data-teleport-button-state="active"] + #results > div.no-teleport {
+	display: none;
+}
+
+/* Sidebar section */
+
+#calc-link-sidebar {
+	user-select: none;
+}
+
+@media (min-width: 55em) {
+	#calc-link-sidebar {
+		position: absolute;
+		top: 0px;
+		left: 0px;			
+	}
+}
+
+#calc-link-sidebar a {
+	text-decoration: none;
+	color: #000;
+}
+
+#calc-link-sidebar div {
+	padding: 1em;
+	border-radius: 0.5em;
+	margin: 0.5em;
+	text-align: center;
+}
+
+#hp-calc-link div { background-color: #FCC; }
+#mp-calc-link div { background-color: #CCF; }
+#failrate-calc-link div { background-color: #BBF; }
