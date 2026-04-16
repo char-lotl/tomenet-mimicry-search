@@ -570,7 +570,12 @@ input[data-invalid] {
 #results div.attr-m > span.appearance,
 #results div.attr-q > span.appearance,
 #results div.attr-big-s > span.appearance,
-#results div.attr-big-z > span.appearance {
+#results div.attr-big-z > span.appearance,
+#results div.attr-green-dr > span.appearance,
+#results div.attr-blue-dr > span.appearance,
+#results div.attr-brown-dr > span.appearance,
+#results div.attr-bronze-dr > span.appearance,
+#results div.attr-gold-dr > span.appearance {
 	background-repeat: repeat;
 	-webkit-background-clip: text;
 	background-clip: text;
@@ -591,6 +596,12 @@ input[data-invalid] {
 #results div.attr-q > span.appearance { background-image: url("./term_iner.gif"); } /* inertia: COMPLETE */
 #results div.attr-big-s > span.appearance { background-image: url("./term_soun.gif"); } /* sound: COMPLETE */
 #results div.attr-big-z > span.appearance { background-image: url("./term_ember.gif"); } /* ember */
+
+#results div.attr-green-dr > span.appearance { background-image: url("./term_green_dr.gif"); } /* custom flicker: green dragonrider */
+#results div.attr-blue-dr > span.appearance { background-image: url("./term_blue_dr.gif"); }
+#results div.attr-brown-dr > span.appearance { background-image: url("./term_brown_dr.gif"); }
+#results div.attr-bronze-dr > span.appearance { background-image: url("./term_bronze_dr.gif"); }
+#results div.attr-gold-dr > span.appearance { background-image: url("./term_gold_dr.gif"); }
 
 #results div > span.name {
 	flex-grow: 1;
