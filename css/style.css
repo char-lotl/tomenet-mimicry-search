@@ -577,7 +577,8 @@ input[data-invalid] {
 #results div.attr-bronze-dr > span.appearance,
 #results div.attr-gold-dr > span.appearance,
 #results div.attr-law > span.appearance,
-#results div.attr-ether > span.appearance {
+#results div.attr-ether > span.appearance,
+#results div.attr-death > span.appearance {
 	background-repeat: repeat;
 	-webkit-background-clip: text;
 	background-clip: text;
@@ -606,6 +607,7 @@ input[data-invalid] {
 #results div.attr-gold-dr > span.appearance { background-image: url("./term_gold_dr.gif"); }
 #results div.attr-law > span.appearance { background-image: url("./term_law.gif"); }
 #results div.attr-ether > span.appearance { background-image: url("./term_ether.gif"); }
+#results div.attr-death > span.appearance { background-image: url("./term_death.gif"); }
 
 #results div > span.name {
 	flex-grow: 1;
