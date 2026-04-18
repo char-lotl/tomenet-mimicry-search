@@ -580,7 +580,11 @@ input[data-invalid] {
 #results div.attr-ether > span.appearance,
 #results div.attr-death > span.appearance,
 #results div.attr-fasti > span.appearance,
-#results div.attr-skydrake > span.appearance {
+#results div.attr-skydrake > span.appearance,
+#results div.attr-unmagic > span.appearance,
+#results div.attr-skyblade > span.appearance,
+#results div.attr-solarblade > span.appearance,
+#results div.attr-starblade > span.appearance {
 	background-repeat: repeat;
 	-webkit-background-clip: text;
 	background-clip: text;
@@ -612,6 +616,10 @@ input[data-invalid] {
 #results div.attr-death > span.appearance { background-image: url("./term_death.gif"); }
 #results div.attr-fasti > span.appearance { background-image: url("./term_fasti.gif"); }
 #results div.attr-skydrake > span.appearance { background-image: url("./term_skydrake.gif"); }
+#results div.attr-unmagic > span.appearance { background-image: url("./term_unmagic.gif"); }
+#results div.attr-skyblade > span.appearance { background-image: url("./term_skyblade.gif"); }
+#results div.attr-solarblade > span.appearance { background-image: url("./term_solarblade.gif"); }
+#results div.attr-starblade > span.appearance { background-image: url("./term_starblade.gif"); }
 
 #results div > span.name {
 	flex-grow: 1;
